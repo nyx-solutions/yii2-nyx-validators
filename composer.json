@@ -11,7 +11,7 @@
     "php"
   ],
   "license": "Apache-2.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -24,7 +24,6 @@
     "kartik-v/yii2-krajee-base": "*",
     "kartik-v/yii2-password": "dev-master",
     "nox-it/yii2-nox": "1.*",
-    "nox-it/yii2-nox-helpers": "1.*",
     "php": ">=5.4.0"
   },
   "autoload": {
@@ -38,7 +37,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/nox-it/yii2-nox-validators"
+      "url": "https://bitbucket.org/nox-it-solutions/yii2-nox-validators"
     }
   ]
 }
