@@ -2,7 +2,7 @@
 
     namespace nox\validators;
 
-    use nox\helpers\Text;
+    use nox\helpers\StringHelper;
     use yii\validators\Validator;
 
     /**
@@ -41,7 +41,7 @@
          */
         public function validateCpf($cpf)
         {
-            $cpf = Text::justNumbers((string)$cpf);
+            $cpf = StringHelper::justNumbers((string)$cpf);
 
             if ($this->skipOnEmpty && empty($cpf)) {
                 return true;
@@ -57,7 +57,7 @@
          */
         public static function isCpfValid($cpf)
         {
-            $cpf = Text::justNumbers($cpf);
+            $cpf = StringHelper::justNumbers($cpf);
 
             if (strlen($cpf) !== 11 || in_array($cpf, [
                     '00000000000',

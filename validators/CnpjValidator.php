@@ -2,7 +2,7 @@
 
     namespace nox\validators;
 
-    use nox\helpers\Text;
+    use nox\helpers\StringHelper;
     use yii\validators\Validator;
 
     /**
@@ -41,7 +41,7 @@
          */
         private function validateCnpj($cnpj)
         {
-            $cnpj = Text::justNumbers($cnpj);
+            $cnpj = StringHelper::justNumbers($cnpj);
 
             if ($this->skipOnEmpty && empty($cnpj)) {
                 return true;
