@@ -11,7 +11,7 @@
     "php"
   ],
   "license": "Apache-2.0",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -20,12 +20,12 @@
   ],
   "minimum-stability": "stable",
   "require": {
+    "php": ">=5.4.0",
     "yiisoft/yii2": "2.*",
     "kartik-v/yii2-krajee-base": "1.*",
-    "kartik-v/yii2-password": "dev-master",
+    "kartik-v/yii2-password": "1.5.*",
     "nox-it/yii2-nox": "1.*",
-    "nox-it/yii2-nox-helpers": "1.*",
-    "php": ">=5.4.0"
+    "nox-it/yii2-nox-helpers": "1.*"
   },
   "autoload": {
     "psr-4": {
