@@ -52,28 +52,28 @@
             }
 
             for ($i = 0, $j = 5, $sum = 0; $i < 12; $i++) {
-                $sum += $cnpj{$i} * $j;
+                $sum += $cnpj[$i] * $j;
 
                 $j = ($j == 2) ? 9 : $j - 1;
             }
 
             $residual = $sum % 11;
 
-            if ($cnpj{12} != ($residual < 2 ? 0 : 11 - $residual)) {
+            if ($cnpj[12] != ($residual < 2 ? 0 : 11 - $residual)) {
                 return false;
             }
 
 
             for ($i = 0, $j = 6, $sum = 0; $i < 13; $i++) {
 
-                $sum += $cnpj{$i} * $j;
+                $sum += $cnpj[$i] * $j;
 
                 $j = ($j == 2) ? 9 : $j - 1;
             }
 
             $residual = ($sum % 11);
 
-            return $cnpj{13} == ($residual < 2 ? 0 : 11 - $residual);
+            return $cnpj[13] == ($residual < 2 ? 0 : 11 - $residual);
         }
 
         /**
@@ -90,6 +90,7 @@
 
         /**
          * @inheritdoc
+         * @noinspection JSUnresolvedVariable
          */
         public function clientValidateAttribute($model, $attribute, $view)
         {
@@ -97,47 +98,47 @@
 
             $skipOnEmpty = (($this->skipOnEmpty) ? 'if(cnpj == \'\') return true;' : '');
 
-            return <<<JS
-if(typeof(validateCnpjNumber) != 'function'){
-	function validateCnpjNumber(cnpj){
-		cnpj = cnpj.replace(/([^0-9]{1,})/g, '');
-
-		{$skipOnEmpty}
-
-		var i, c = cnpj.substr(0,12), dv = cnpj.substr(12,2), d1 = 0;
-
-		for(i = 0; i < 12; i++){
-			d1 += c.charAt(11-i)*(2+(i % 8));
-		}
-
-		if(d1 == 0) return false;
-
-		d1 = 11 - (d1 % 11);
-
-		if(d1 > 9) d1 = 0;
-
-		if(dv.charAt(0) != d1) return false;
-
-		d1 *= 2;
-
-		for(i = 0; i < 12; i++){
-			d1 += c.charAt(11-i)*(2+((i+1) % 8));
-		}
-
-		d1 = 11 - (d1 % 11);
-
-		if(d1 > 9) d1 = 0;
-		if(dv.charAt(1) != d1) return false;
-
-		return true;
-	}
+            return <<<TEXT
+if (typeof(validateCnpjNumber) !== 'function') {
+  function validateCnpjNumber(cnpj){
+    cnpj = cnpj.replace(/([^0-9]{1,})/g, '');
+    
+    {$skipOnEmpty}
+    
+    var i, c = cnpj.substr(0,12), dv = cnpj.substr(12,2), d1 = 0;
+    
+    for (i = 0; i < 12; i++) {
+      d1 += c.charAt(11-i)*(2+(i % 8));
+    }
+    
+    if (d1 === 0) return false;
+    
+    d1 = 11 - (d1 % 11);
+    
+    if (d1 > 9) d1 = 0;
+    
+    if(dv.charAt(0) != d1) return false;
+    
+    d1 *= 2;
+    
+    for (i = 0; i < 12; i++) {
+    d1 += c.charAt(11-i)*(2+((i+1) % 8));
+    }
+    
+    d1 = 11 - (d1 % 11);
+    
+    if(d1 > 9) d1 = 0;
+    
+    if(dv.charAt(1) != d1) return false;
+    
+    return true;
+  }
 }
 
 if(!validateCnpjNumber(value)){
-	messages.push($message);
+  messages.push($message);
 }
-
-JS;
+TEXT;
 
         }
     }

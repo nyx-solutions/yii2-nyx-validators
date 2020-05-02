@@ -109,7 +109,7 @@
          */
         private function getMessage($attribute)
         {
-            return (string)preg_replace('/\{attribute\}/', $attribute, $this->message);
+            return (string)preg_replace('/{attribute}/', $attribute, $this->message);
         }
 
         /**
@@ -133,29 +133,30 @@
 
             $skipOnEmpty = (($this->skipOnEmpty) ? 'if(word == \'\') return true;' : '');
 
-            return <<<JS
+            return <<<TEXT
 if(typeof(validateOneWord) != 'function'){
-	function validateOneWord(word){
-		{$skipOnEmpty}
-
-		if(word.match(/(\ )/g)) return false;
-		if(word.match(/([0-9]{1,})/g)) return false;
-
-		var specialChars = ['"', '\'', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_', '-', '+', '=', '§', 'ª', 'º', '{', '}', '[', ']', '?', '/', '\\\', ';', ':', '.', ',', '<', '>', '|', '´', '`', '^', '~'];
-
-		for(var i = 0; i < specialChars.length; i++){
-			if(word.indexOf(specialChars[i]) !== -1) return false;
-		}
-
-		return true;
-	}
+    function validateOneWord(word){
+        {$skipOnEmpty}
+        
+        if(word.match(/(\ )/g)) return false;
+        
+        if(word.match(/([0-9]{1,})/g)) return false;
+        
+        var specialChars = ['"', '\'', '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '_', '-', '+', '=', '§', 'ª', 'º', '{', '}', '[', ']', '?', '/', '\\\', ';', ':', '.', ',', '<', '>', '|', '´', '`', '^', '~'];
+        
+        for(var i = 0; i < specialChars.length; i++){
+            if(word.indexOf(specialChars[i]) !== -1) return false;
+        }
+        
+        return true;
+    }
 }
 
 if(!validateOneWord(value)){
-	messages.push($message);
+    messages.push({$message});
 }
 
-JS;
+TEXT;
 
         }
     }

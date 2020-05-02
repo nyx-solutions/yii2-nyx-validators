@@ -2,6 +2,9 @@
 
     namespace nox\validators;
 
+    use DateTime;
+    use DateTimeZone;
+    use Yii;
     use yii\validators\Validator;
 
     /**
@@ -17,12 +20,12 @@
         /**
          * @var string
          */
-        public $format = 'd/m/Y H:i:s';
+        public string $format = 'd/m/Y H:i:s';
 
         /**
          * @var bool
          */
-        public $useTime = true;
+        public bool $useTime = true;
 
         /**
          * @inheritdoc
@@ -38,7 +41,7 @@
         public function validateAttribute($model, $attribute)
         {
             $value = (string)$model->$attribute;
-            $date = \DateTime::createFromFormat($this->format, $value, new \DateTimeZone(\Yii::$app->getTimeZone()));
+            $date = DateTime::createFromFormat($this->format, $value, new DateTimeZone(Yii::$app->getTimeZone()));
             $dataBaseFormat = 'Y-m-d';
 
             if ($this->useTime) {

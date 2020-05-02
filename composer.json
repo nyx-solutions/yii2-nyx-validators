@@ -2,16 +2,9 @@
   "name": "nox-it/yii2-nox-validators",
   "description": "Yii2 NOX Validators",
   "type": "library",
-  "keywords": [
-    "yii2",
-    "extension",
-    "validators",
-    "forms",
-    "framework",
-    "php"
-  ],
+  "keywords": ["yii2", "extension", "validators", "forms", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -20,11 +13,13 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0",
-    "nox-it/yii2-nox": "1.*",
-    "nox-it/yii2-nox-helpers": "1.*",
-    "kartik-v/yii2-krajee-base": "1.*",
-    "kartik-v/yii2-password": "1.5.*"
+    "php": ">=7.4.0",
+    "ext-mbstring": "*",
+    "ext-json": "*",
+    "nox-it/yii2-nox": "~2.0.0",
+    "nox-it/yii2-nox-helpers": "~2.0.0",
+    "kartik-v/yii2-krajee-base": "~2.0.5",
+    "kartik-v/yii2-password": "~1.5.4"
   },
   "autoload": {
     "psr-4": {
@@ -35,6 +30,10 @@
     "process-timeout": 1800
   },
   "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
     {
       "type": "vcs",
       "url": "https://github.com/nox-it/yii2-nox-validators"

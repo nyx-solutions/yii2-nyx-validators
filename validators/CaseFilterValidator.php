@@ -15,14 +15,14 @@
     class CaseFilterValidator extends Validator
     {
         /**
-         * @var integer
+         * @var int
          */
-        public $mode = MB_CASE_UPPER;
+        public int $mode = MB_CASE_UPPER;
 
         /**
          * @var bool
          */
-        public $trim = false;
+        public bool $trim = false;
 
         /**
          * @inheritdoc

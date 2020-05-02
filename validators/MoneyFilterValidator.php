@@ -17,17 +17,17 @@
         /**
          * @var string
          */
-        public $thousands = '.';
+        public string $thousands = '.';
 
         /**
          * @var string
          */
-        public $decimal = ',';
+        public string $decimal = ',';
 
         /**
          * @var int
          */
-        public $precision = 2;
+        public int $precision = 2;
 
         /**
          * @inheritdoc

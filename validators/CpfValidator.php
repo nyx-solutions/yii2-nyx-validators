@@ -76,12 +76,12 @@
             } else {
                 for ($t = 9; $t < 11; $t++) {
                     for ($d = 0, $c = 0; $c < $t; $c++) {
-                        $d += $cpf{$c} * (($t + 1) - $c);
+                        $d += $cpf[$c] * (($t + 1) - $c);
                     }
 
                     $d = ((10 * $d) % 11) % 10;
 
-                    if ($cpf{$c} != $d) {
+                    if ($cpf[$c] != $d) {
                         return false;
                     }
                 }
@@ -111,44 +111,45 @@
 
             $skipOnEmpty = (($this->skipOnEmpty) ? 'if(cpf == \'\') return true;' : '');
 
-            return <<<JS
+            return <<<TEXT
 if(typeof(validateCpfNumber) != 'function'){
-	function validateCpfNumber(cpf){
-		var sum, residual;
+  function validateCpfNumber(cpf){
+    var sum, residual;
 
-		sum = 0;
+    sum = 0;
 
-		cpf = cpf.replace(/([^0-9]{1,})/g, '');
+    cpf = cpf.replace(/([^0-9]{1,})/g, '');
 
-		{$skipOnEmpty}
+    {$skipOnEmpty}
 
-		if(cpf == '00000000000' || cpf == '11111111111' || cpf == '22222222222' || cpf == '33333333333' || cpf == '44444444444' || cpf == '55555555555' || cpf == '66666666666' || cpf == '77777777777' || cpf == '88888888888' || cpf == '99999999999') return false;
+    if(cpf == '00000000000' || cpf == '11111111111' || cpf == '22222222222' || cpf == '33333333333' || cpf == '44444444444' || cpf == '55555555555' || cpf == '66666666666' || cpf == '77777777777' || cpf == '88888888888' || cpf == '99999999999') return false;
 
-		for(var i = 1; i <= 9; i++) sum = sum + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    for (var i = 1; i <= 9; i++) sum = sum + parseInt(cpf.substring(i - 1, i)) * (11 - i);
 
-		residual = (sum * 10) % 11;
+    residual = (sum * 10) % 11;
 
-		if((residual == 10) || (residual == 11)) residual = 0;
-		if(residual != parseInt(cpf.substring(9, 10))) return false;
+    if((residual == 10) || (residual == 11)) residual = 0;
 
-		sum = 0;
+    if(residual != parseInt(cpf.substring(9, 10))) return false;
 
-		for(i = 1; i <= 10; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (12 - i);
+    sum = 0;
 
-		residual = (sum * 10) % 11;
+    for(i = 1; i <= 10; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (12 - i);
 
-		if((residual == 10) || (residual == 11)) residual = 0;
-		if(residual != parseInt(cpf.substring(10, 11))) return false;
+    residual = (sum * 10) % 11;
 
-		return true;
-	}
+    if((residual == 10) || (residual == 11)) residual = 0;
+
+    if(residual != parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+  }
 }
 
 if(!validateCpfNumber(value)){
-	messages.push($message);
+  messages.push($message);
 }
-
-JS;
+TEXT;
 
         }
     }
