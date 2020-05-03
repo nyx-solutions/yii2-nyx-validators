@@ -4,7 +4,7 @@
   "type": "library",
   "keywords": ["yii2", "extension", "validators", "forms", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -18,7 +18,6 @@
     "ext-json": "*",
     "nox-it/yii2-nox": "~2.0.0",
     "nox-it/yii2-nox-helpers": "~2.0.0",
-    "kartik-v/yii2-krajee-base": "~2.0.5",
     "kartik-v/yii2-password": "~1.5.4"
   },
   "autoload": {
