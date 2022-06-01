@@ -1,6 +1,6 @@
 <?php
 
-    namespace nox\validators;
+    namespace nyx\validators;
 
     use DateTime;
     use DateTimeZone;

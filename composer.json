@@ -1,10 +1,10 @@
 {
-  "name": "nox-it/yii2-nox-validators",
-  "description": "Yii2 NOX Validators",
+  "name": "nyx-solutions/yii2-nyx-validators",
+  "description": "Yii2 nyx Validators",
   "type": "library",
   "keywords": ["yii2", "extension", "validators", "forms", "framework", "php"],
   "license": "BSD-3-Clause",
-  "version": "2.0.1",
+  "version": "4.0.0",
   "authors": [
     {
       "name": "Jonatas Sas",
@@ -16,13 +16,13 @@
     "php": ">=7.4.0",
     "ext-mbstring": "*",
     "ext-json": "*",
-    "nox-it/yii2-nox": "~2.0.0",
-    "nox-it/yii2-nox-helpers": "~2.0.0",
+    "nyx-solutions/yii2-nyx": "~2.0.0",
+    "nyx-solutions/yii2-nyx-helpers": "~2.0.0",
     "kartik-v/yii2-password": "~1.5.4"
   },
   "autoload": {
     "psr-4": {
-      "nox\\validators\\": "validators/"
+      "nyx\\validators\\": "validators/"
     }
   },
   "config": {
@@ -35,7 +35,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/nox-it/yii2-nox-validators"
+      "url": "https://github.com/nyx-solutions/yii2-nyx-validators"
     }
   ]
 }

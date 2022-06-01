@@ -1,6 +1,6 @@
 <?php
 
-    namespace nox\validators;
+    namespace nyx\validators;
 
     use kartik\password\StrengthValidator;
     use Yii;
@@ -8,7 +8,7 @@
     /**
      * Class PasswordStrengthValidator
      *
-     * @package nox\validators
+     * @package nyx\validators
      */
     class PasswordStrengthValidator extends StrengthValidator
     {

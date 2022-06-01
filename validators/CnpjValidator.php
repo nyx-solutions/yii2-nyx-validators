@@ -1,8 +1,8 @@
 <?php
 
-    namespace nox\validators;
+    namespace nyx\validators;
 
-    use nox\helpers\StringHelper;
+    use nyx\helpers\StringHelper;
     use yii\validators\Validator;
 
     /**
