@@ -1,7 +1,7 @@
-Yii PHP Framework Version 2 / NOX Validators
+Yii PHP Framework Version 2 / NYX Validators
 ============================================
 
-Yii2 NOX Validators is a Validators library for Yii Framework version 2.
+Yii2 NYX Validators is a Validators library for Yii Framework version 2.
 
 [![Latest Stable Version](https://poser.pugx.org/nyx-solutions/yii2-nyx-validators/v/stable)](https://packagist.org/packages/nyx-solutions/yii2-nyx-validators)
 [![Total Downloads](https://poser.pugx.org/nyx-solutions/yii2-nyx-validators/downloads)](https://packagist.org/packages/nyx-solutions/yii2-nyx-validators)
